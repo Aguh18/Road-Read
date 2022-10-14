@@ -14,6 +14,7 @@ public class RoadSpawner : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other) {
         Road road = other.GetComponent<Road>();
+        road.transform.SetParent(env);
 
         if(road){
             prevRoad = road;
