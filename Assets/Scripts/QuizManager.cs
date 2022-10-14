@@ -28,19 +28,32 @@ public class QuizManager : MonoBehaviour
     }
 
     public void GenerateQuiz(){
+        quizPanel.gameObject.SetActive(true);
         jawabanbutton[UnityEngine.Random.Range(0, 2)] = indexjawabanbenar;
 
         for(int i = 0; i < quizPanel.childCount; i++){
+            Transform button = quizPanel.GetChild(i);
             if(jawabanbutton[i] != -1){
-                Transform button = quizPanel.GetChild(i);
                 button.GetChild(0).GetComponent<Text>().text = jawaban[indexjawabanbenar];
+                continue;
             }
+
+            jawabanbutton[i] = UnityEngine.Random.Range(0, jawaban.Length);
+            button.GetChild(0).GetComponent<Text>().text = jawaban[jawabanbutton[i]];
+
         }
     }
 
     public void buttonclick(int idx){
         if(indexjawabanbenar == jawabanbutton[idx]){
-
+            Debug.Log("Jawaban anda benar");
+            quizPanel.gameObject.SetActive(false);
+            indexjawabanbenar = -1;
+        }
+        else{
+            Debug.Log("tidak benar");
+            quizPanel.gameObject.SetActive(false);
+            indexjawabanbenar = -1;
         }
     }
 }

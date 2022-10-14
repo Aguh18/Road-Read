@@ -12,4 +12,8 @@ public class MoveLeft : MonoBehaviour
             transform.Translate(Vector3.left * kecepatan * Time.deltaTime);
         }
     }
+
+    public void setTambahKecepatan(int amount){
+        kecepatan += amount;
+    }
 }

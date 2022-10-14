@@ -5,7 +5,7 @@ using UnityEngine;
 public class SignSpawner : MonoBehaviour
 {
     [SerializeField] Sprite[] sprites;
-    int batastanda;
+    public int batastanda;
     [SerializeField] Pengendara pengendara;
     public Sign signRef;
 
@@ -23,7 +23,10 @@ public class SignSpawner : MonoBehaviour
         while(true){
             Sign newSign = Instantiate(signRef);
             newSign.gameObject.SetActive(true);
-            yield return new WaitForSeconds(2f);
+            QuizManager.Instance.GenerateQuiz();
+            yield return new WaitForSeconds(5f);
+
+
         }
 
     }
