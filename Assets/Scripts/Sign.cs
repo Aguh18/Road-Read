@@ -11,7 +11,8 @@ public class Sign : MoveLeft
     private void Start() {
         spriteSign = GetComponent<SpriteRenderer>();
         spriteSign.sprite = signSpawner.getRandomSprite();
-        
+        QuizManager.Instance.setJawabanBenar(signSpawner.getJawabanBenar());
+        QuizManager.Instance.GenerateQuiz();
     }
     private void Update() {
         Move();

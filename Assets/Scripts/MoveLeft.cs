@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveLeft : MonoBehaviour
 {
     [SerializeField] int kecepatan;
+
     public Pengendara pengendara;
 
     public void Move(){
@@ -15,5 +17,13 @@ public class MoveLeft : MonoBehaviour
 
     public void setTambahKecepatan(int amount){
         kecepatan += amount;
+    }
+
+    public void setKurangiKecepatan(int amount){
+        kecepatan -= amount;
+    }
+
+    public int Kecepatan(){
+        return kecepatan;
     }
 }

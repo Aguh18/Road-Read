@@ -11,10 +11,10 @@ public class RoadSpawner : MonoBehaviour
         Road newroad = Instantiate(roadRef);
         newroad.gameObject.SetActive(true);
         prevRoad.SetNextPos(newroad);
+        newroad.transform.SetParent(env);
     }
     private void OnTriggerExit2D(Collider2D other) {
         Road road = other.GetComponent<Road>();
-        road.transform.SetParent(env);
 
         if(road){
             prevRoad = road;

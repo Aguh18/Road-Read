@@ -4,30 +4,31 @@ using UnityEngine;
 
 public class SignSpawner : MonoBehaviour
 {
-    [SerializeField] Sprite[] sprites;
     public int batastanda;
+    [SerializeField] Sprite[] sprites;
     [SerializeField] Pengendara pengendara;
     public Sign signRef;
+    int rand;
+    public RoadSpawner roadSpawner;
+
 
 
     private void Start() {
-        StartCoroutine(SpawnSign());
+        SpawnSign();
     }
     public Sprite getRandomSprite(){
-        int rand = UnityEngine.Random.Range(0, batastanda - 1);
+        rand = UnityEngine.Random.Range(0, batastanda - 1);
 
         return sprites[rand];
     }
 
-    IEnumerator SpawnSign(){
-        while(true){
-            Sign newSign = Instantiate(signRef);
-            newSign.gameObject.SetActive(true);
-            QuizManager.Instance.GenerateQuiz();
-            yield return new WaitForSeconds(5f);
+    public int getJawabanBenar(){
+        return rand;
+    }
 
-
-        }
-
+    public void SpawnSign(){
+        Sign newSign = Instantiate(signRef);
+        newSign.gameObject.SetActive(true);
+        newSign.transform.position = transform.position;
     }
 }
